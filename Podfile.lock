@@ -1,0 +1,34 @@
+PODS:
+  - AWSAppSync (2.6.16):
+    - AWSCore (~> 2.6.6)
+    - ReachabilitySwift (~> 4.0.0)
+    - SQLite.swift (= 0.11.4)
+  - AWSCognito (2.6.21):
+    - AWSCore (= 2.6.21)
+  - AWSCognitoIdentityProvider (2.6.21):
+    - AWSCognitoIdentityProviderASF (= 1.0.1)
+    - AWSCore (= 2.6.21)
+  - AWSCognitoIdentityProviderASF (1.0.1)
+  - AWSCore (2.6.21)
+  - ReachabilitySwift (4.0.0)
+  - SQLite.swift (0.11.4):
+    - SQLite.swift/standard (= 0.11.4)
+  - SQLite.swift/standard (0.11.4)
+
+DEPENDENCIES:
+  - AWSAppSync
+  - AWSCognito
+  - AWSCognitoIdentityProvider
+
+SPEC CHECKSUMS:
+  AWSAppSync: eb2758d2a60518b6c814c119de511dbae1b3fa97
+  AWSCognito: ddd3d4cb90dc0adb47acd199ca9bbe48ea1d18a7
+  AWSCognitoIdentityProvider: 1f724c5e43528580cd9f60f0a1290888793ed473
+  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
+  AWSCore: a1ff1d32ea7af235fe64be301c204b34cb1f9f83
+  ReachabilitySwift: e67b2cab4d5386053673d8a7421b5981e5f08259
+  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
+
+PODFILE CHECKSUM: 7ff2c4ab00921487903b635b4d698a2def70fa12
+
+COCOAPODS: 1.4.0

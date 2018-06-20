@@ -1,0 +1,23 @@
+query Diaries($author: String) {
+  diaries(author: $author) {
+    id
+    title
+    author
+  }
+}
+
+mutation InsertDiary($id: ID!, $title: String, $author: String) {
+  insertDiary(id: $id, title: $title, author: $author) {
+    id
+    title
+    author
+  }
+}
+
+subscription OnSubscribe($author: String) {
+  onSubscribe(author: $author) {
+    id
+    title
+    author
+  }
+}
