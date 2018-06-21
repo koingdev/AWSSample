@@ -11,7 +11,7 @@ import AWSCognitoIdentityProvider
 
 final class CognitoUserPoolManager {
 
-    private var userPool: AWSCognitoIdentityUserPool?
+    var userPool: AWSCognitoIdentityUserPool?
     var author: String!
     var currentUser: AWSCognitoIdentityUser? {
         get {
