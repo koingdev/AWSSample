@@ -44,7 +44,10 @@ final class SignUpVC: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     guard let `self` = self else { return }
                     if let error = error {
-                        UIAlertController.alertOkay(title: "Invalid code!", message: error.localizedDescription)
+                        UIAlertController.alertOkay(title: "Invalid code!", message: error.localizedDescription) { [weak self] _ in
+                            guard let `self` = self else { return }
+                            self.requestConfirmCode(user)
+                        }
                     } else {
                         self.alertSuccess()
                     }
