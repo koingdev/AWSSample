@@ -103,7 +103,6 @@ final class DiaryVC: UIViewController {
                     // Update the local store with the newly received data
                     try? transaction?.update(query: DiariesQuery(author: self.author)) { (data: inout DiariesQuery.Data) in
                         data.diaries?.append(diaryToAdd)
-                        self.diaries = (data.diaries?.reversed())!
                     }
                 }
             }

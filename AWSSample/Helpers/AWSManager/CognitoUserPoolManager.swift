@@ -56,7 +56,6 @@ final class CognitoUserPoolManager {
                 return nil
             }
             // Success
-            cognitoToken = task.result?.accessToken?.tokenString ?? ""
             completion(nil)
             return nil
         }
