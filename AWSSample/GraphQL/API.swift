@@ -4,23 +4,16 @@ import AWSAppSync
 
 public final class DiariesQuery: GraphQLQuery {
   public static let operationString =
-    "query Diaries($author: String) {\n  diaries(author: $author) {\n    __typename\n    id\n    title\n    author\n  }\n}"
+    "query Diaries {\n  allDiaries {\n    __typename\n    id\n    title\n    author\n  }\n}"
 
-  public var author: String?
-
-  public init(author: String? = nil) {
-    self.author = author
-  }
-
-  public var variables: GraphQLMap? {
-    return ["author": author]
+  public init() {
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("diaries", arguments: ["author": GraphQLVariable("author")], type: .list(.object(Diary.selections))),
+      GraphQLField("allDiaries", type: .list(.object(AllDiary.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -29,20 +22,20 @@ public final class DiariesQuery: GraphQLQuery {
       self.snapshot = snapshot
     }
 
-    public init(diaries: [Diary?]? = nil) {
-      self.init(snapshot: ["__typename": "Query", "diaries": diaries.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+    public init(allDiaries: [AllDiary?]? = nil) {
+      self.init(snapshot: ["__typename": "Query", "allDiaries": allDiaries.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
     }
 
-    public var diaries: [Diary?]? {
+    public var allDiaries: [AllDiary?]? {
       get {
-        return (snapshot["diaries"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Diary(snapshot: $0) } } }
+        return (snapshot["allDiaries"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { AllDiary(snapshot: $0) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "diaries")
+        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "allDiaries")
       }
     }
 
-    public struct Diary: GraphQLSelectionSet {
+    public struct AllDiary: GraphQLSelectionSet {
       public static let possibleTypes = ["Diary"]
 
       public static let selections: [GraphQLSelection] = [

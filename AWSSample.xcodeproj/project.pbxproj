@@ -12,8 +12,8 @@
 		A217ECCF20D9EF3700C4D6E7 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217ECCE20D9EF3700C4D6E7 /* DiaryVC.swift */; };
 		A217ECD320D9F37800C4D6E7 /* awssample.graphql in Resources */ = {isa = PBXBuildFile; fileRef = A217ECD120D9F37800C4D6E7 /* awssample.graphql */; };
 		A217ECD420D9F37800C4D6E7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = A217ECD220D9F37800C4D6E7 /* schema.json */; };
-		A217ECD620D9F38300C4D6E7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217ECD520D9F38300C4D6E7 /* API.swift */; };
 		A217ECD820D9F93D00C4D6E7 /* TableViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217ECD720D9F93D00C4D6E7 /* TableViewX.swift */; };
+		A22456B4212B08ED0094B789 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22456B3212B08ED0094B789 /* API.swift */; };
 		A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CE9A920D0A80600FFFD8E /* LoginVC.swift */; };
 		A22CE9AD20D0A80600FFFD8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22CE9AB20D0A80600FFFD8E /* Main.storyboard */; };
 		A22CE9AF20D0A80700FFFD8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A22CE9AE20D0A80700FFFD8E /* Assets.xcassets */; };
@@ -51,8 +51,8 @@
 		A217ECCE20D9EF3700C4D6E7 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
 		A217ECD120D9F37800C4D6E7 /* awssample.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = awssample.graphql; sourceTree = "<group>"; };
 		A217ECD220D9F37800C4D6E7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		A217ECD520D9F38300C4D6E7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A217ECD720D9F93D00C4D6E7 /* TableViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewX.swift; sourceTree = "<group>"; };
+		A22456B3212B08ED0094B789 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = AWSSample/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
 		A22CE9A420D0A80600FFFD8E /* AWSSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AWSSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22CE9A920D0A80600FFFD8E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A22CE9AC20D0A80600FFFD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 				A28E8B6420D2707C0078936E /* Constants.swift */,
 				A22CE9BA20D0A97700FFFD8E /* CognitoUserPoolManager.swift */,
 				A28E8B6220D2681A0078936E /* AppSyncManager.swift */,
-				A217ECD520D9F38300C4D6E7 /* API.swift */,
+				A22456B3212B08ED0094B789 /* API.swift */,
 			);
 			path = AWSManager;
 			sourceTree = "<group>";
@@ -264,7 +264,6 @@
 				A22CE9A120D0A80600FFFD8E /* Frameworks */,
 				A22CE9A220D0A80600FFFD8E /* Resources */,
 				EDDCF8FC851CF7C10473C06E /* [CP] Embed Pods Frameworks */,
-				7B9CE29261C2352045EBD55F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,21 +342,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7B9CE29261C2352045EBD55F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AWSSample/Pods-AWSSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EDDCF8FC851CF7C10473C06E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,6 +385,7 @@
 				A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */,
 				A240E4B720D0B88C0045DD0E /* UIVisualEffectViewX.swift in Sources */,
 				A240E4B620D0B88C0045DD0E /* UIViewX.swift in Sources */,
+				A22456B4212B08ED0094B789 /* API.swift in Sources */,
 				A240E4B320D0B88C0045DD0E /* UIViewAnchorPoint.swift in Sources */,
 				A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */,
 				A2ACC25A20DB9BE200A58171 /* BindableX.swift in Sources */,
@@ -415,7 +400,6 @@
 				A240E4BE20D0C0900045DD0E /* ViewControllerX.swift in Sources */,
 				A240E4B120D0B88C0045DD0E /* UIButtonX.swift in Sources */,
 				A2ACC25220DB65D800A58171 /* LoginModel.swift in Sources */,
-				A217ECD620D9F38300C4D6E7 /* API.swift in Sources */,
 				A240E4B220D0B88C0045DD0E /* UILabelX.swift in Sources */,
 				A240E4AF20D0B88C0045DD0E /* UIViewXRadialGradient.swift in Sources */,
 				A2ACC25620DB66D800A58171 /* LoginViewModel.swift in Sources */,

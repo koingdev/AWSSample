@@ -1,5 +1,5 @@
-query Diaries($author: String) {
-  diaries(author: $author) {
+query Diaries {
+  allDiaries {
     id
     title
     author

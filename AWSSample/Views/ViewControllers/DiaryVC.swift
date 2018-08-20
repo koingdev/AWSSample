@@ -26,9 +26,11 @@ final class DiaryVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     fileprivate var tableViewX: TableViewX!
     fileprivate var onSubscribe: AWSAppSyncSubscriptionWatcher<OnSubscribeSubscription>?
-    fileprivate var diaries: [DiariesQuery.Data.Diary?] = [] {
+    fileprivate var diaries: [DiariesQuery.Data.AllDiary?] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     fileprivate var author = CognitoUserPoolManager.sharedInstance.author
@@ -37,8 +39,7 @@ final class DiaryVC: UIViewController {
         super.viewDidLoad()
         setUpNavBar()
         setUpTableView()
-        loadAllDiaries()
-        startSubscription()
+        loadAllDiaries(cachePolicy: .returnCacheDataDontFetch)
     }
     
     fileprivate func setUpTableView() {
@@ -72,16 +73,24 @@ final class DiaryVC: UIViewController {
     fileprivate func insertDiary(title: String) {
         let uniqueId = UUID().uuidString
         // Offline
-        let diary = DiariesQuery.Data.Diary.init(id: uniqueId, title: title, author: author)
+        let diary = DiariesQuery.Data.AllDiary.init(id: uniqueId, title: title, author: author)
         self.diaries.insert(diary, at: 0)
         // Online
         let mutation = InsertDiaryMutation(id: uniqueId, title: title, author: author)
-        AppSyncManager.sharedInstance?.perform(mutation: mutation)
+        AppSyncManager.sharedInstance?.perform(mutation: mutation, optimisticUpdate: { transaction in
+            do {
+                try transaction?.update(query: DiariesQuery()) { (data: inout DiariesQuery.Data) in
+                    data.allDiaries?.append(diary)
+                }
+            } catch {
+                print("\nError optimistic update...\n")
+            }
+        })
     }
     
-    fileprivate func loadAllDiaries() {
-        AppSyncManager.sharedInstance?.fetch(query: DiariesQuery(author: author), cachePolicy: .fetchIgnoringCacheData) { (res, err) in
-            if let diaries = res?.data?.diaries {
+    fileprivate func loadAllDiaries(cachePolicy: CachePolicy) {
+        AppSyncManager.sharedInstance?.fetch(query: DiariesQuery(), cachePolicy: cachePolicy) { (res, err) in
+            if let diaries = res?.data?.allDiaries {
                 self.diaries = diaries
             } else {
                 print("\n---------- [ \(err?.localizedDescription ?? "") ] ----------\n")
@@ -99,10 +108,10 @@ final class DiaryVC: UIViewController {
                     // Store a reference to the new object
                     let newDiary = result.data!.onSubscribe!
                     // Create a new object for the desired query where the new object content should reside
-                    let diaryToAdd = DiariesQuery.Data.Diary.init(id: newDiary.id, title: newDiary.title, author: newDiary.author)
+                    let diaryToAdd = DiariesQuery.Data.AllDiary.init(id: newDiary.id, title: newDiary.title, author: newDiary.author)
                     // Update the local store with the newly received data
-                    try? transaction?.update(query: DiariesQuery(author: self.author)) { (data: inout DiariesQuery.Data) in
-                        data.diaries?.append(diaryToAdd)
+                    try? transaction?.update(query: DiariesQuery()) { (data: inout DiariesQuery.Data) in
+                        data.allDiaries?.append(diaryToAdd)
                     }
                 }
             }

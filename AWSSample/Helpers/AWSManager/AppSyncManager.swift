@@ -15,7 +15,8 @@ final class AppSyncManager {
     static var sharedInstance: AWSAppSyncClient? {
         if appSyncClient == nil {
             do {
-                let databaseURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(databasName)
+                let tmpURL = URL(fileURLWithPath: NSTemporaryDirectory())
+                let databaseURL = tmpURL.appendingPathComponent(databasName)
                 let appSyncConfig = try? AWSAppSyncClientConfiguration(url: endPointURL,
                                                                        serviceRegion: region,
                                                                        userPoolsAuthProvider: CognitoAuthProvider(),
