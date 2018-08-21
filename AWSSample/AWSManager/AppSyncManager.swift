@@ -15,6 +15,7 @@ final class AppSyncManager {
         let tmpURL = URL(fileURLWithPath: NSTemporaryDirectory())
         let databaseURL = tmpURL.appendingPathComponent(databasName)
         let urlSessionConfiguration = URLSessionConfiguration.default
+        // Our custom request header => In resolve mapping: $context.request.headers.author
         urlSessionConfiguration.httpAdditionalHeaders = ["author": CognitoUserPoolManager.instance.author]
         let appSyncConfig = try! AWSAppSyncClientConfiguration(url: endPointURL,
                                                                serviceRegion: region,
