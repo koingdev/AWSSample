@@ -34,13 +34,6 @@
 		A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B5F20D265C20078936E /* AlertControllerX.swift */; };
 		A28E8B6320D2681A0078936E /* AppSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6220D2681A0078936E /* AppSyncManager.swift */; };
 		A28E8B6520D2707C0078936E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6420D2707C0078936E /* Constants.swift */; };
-		A2ACC25220DB65D800A58171 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACC25120DB65D800A58171 /* LoginModel.swift */; };
-		A2ACC25620DB66D800A58171 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACC25520DB66D800A58171 /* LoginViewModel.swift */; };
-		A2ACC25A20DB9BE200A58171 /* BindableX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACC25920DB9BE200A58171 /* BindableX.swift */; };
-		A2ACC25C20DB9C5C00A58171 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACC25B20DB9C5C00A58171 /* SignupViewModel.swift */; };
-		A2ACC25E20DB9C6600A58171 /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACC25D20DB9C6600A58171 /* DiaryViewModel.swift */; };
-		A2ACC26020DBAE4B00A58171 /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACC25F20DBAE4B00A58171 /* SignupModel.swift */; };
-		A2ACC26220DBAE5700A58171 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2ACC26120DBAE5700A58171 /* DiaryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,13 +68,6 @@
 		A28E8B5F20D265C20078936E /* AlertControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerX.swift; sourceTree = "<group>"; };
 		A28E8B6220D2681A0078936E /* AppSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncManager.swift; sourceTree = "<group>"; };
 		A28E8B6420D2707C0078936E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A2ACC25120DB65D800A58171 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		A2ACC25520DB66D800A58171 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		A2ACC25920DB9BE200A58171 /* BindableX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableX.swift; sourceTree = "<group>"; };
-		A2ACC25B20DB9C5C00A58171 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
-		A2ACC25D20DB9C6600A58171 /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
-		A2ACC25F20DBAE4B00A58171 /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
-		A2ACC26120DBAE5700A58171 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				A2ACC25020DB659C00A58171 /* Helpers */,
-				A2ACC24E20DB653600A58171 /* Views */,
-				A2ACC24D20DB652D00A58171 /* ViewModels */,
-				A2ACC24C20DB652300A58171 /* Models */,
+				A28E8B6120D267DE0078936E /* AWSManager */,
+				A240E4BF20D0C0C40045DD0E /* ViewControllers */,
+				A2ACC24F20DB655B00A58171 /* Storyboards */,
 				A217ECD020D9F37800C4D6E7 /* GraphQL */,
 				A202DFF120D0FCE3002D8E77 /* AppDelegate.swift */,
 				A22CE9B020D0A80700FFFD8E /* LaunchScreen.storyboard */,
@@ -159,7 +145,6 @@
 		A240E4BA20D0C0300045DD0E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A2ACC25920DB9BE200A58171 /* BindableX.swift */,
 				A28E8B5F20D265C20078936E /* AlertControllerX.swift */,
 				A240E4BD20D0C0900045DD0E /* ViewControllerX.swift */,
 				A217ECD720D9F93D00C4D6E7 /* TableViewX.swift */,
@@ -188,35 +173,6 @@
 			path = AWSManager;
 			sourceTree = "<group>";
 		};
-		A2ACC24C20DB652300A58171 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A2ACC25120DB65D800A58171 /* LoginModel.swift */,
-				A2ACC25F20DBAE4B00A58171 /* SignupModel.swift */,
-				A2ACC26120DBAE5700A58171 /* DiaryModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		A2ACC24D20DB652D00A58171 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				A2ACC25520DB66D800A58171 /* LoginViewModel.swift */,
-				A2ACC25B20DB9C5C00A58171 /* SignupViewModel.swift */,
-				A2ACC25D20DB9C6600A58171 /* DiaryViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		A2ACC24E20DB653600A58171 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A2ACC24F20DB655B00A58171 /* Storyboards */,
-				A240E4BF20D0C0C40045DD0E /* ViewControllers */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		A2ACC24F20DB655B00A58171 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +186,6 @@
 			children = (
 				A240E4A420D0B88C0045DD0E /* DesignableX */,
 				A240E4BA20D0C0300045DD0E /* Extensions */,
-				A28E8B6120D267DE0078936E /* AWSManager */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -264,7 +219,6 @@
 				A22CE9A120D0A80600FFFD8E /* Frameworks */,
 				A22CE9A220D0A80600FFFD8E /* Resources */,
 				EDDCF8FC851CF7C10473C06E /* [CP] Embed Pods Frameworks */,
-				21AEC1087AE0879131091844 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,21 +297,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		21AEC1087AE0879131091844 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AWSSample/Pods-AWSSample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EDDCF8FC851CF7C10473C06E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,7 +334,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2ACC25C20DB9C5C00A58171 /* SignupViewModel.swift in Sources */,
 				A240E4B420D0B88C0045DD0E /* UIViewControllerX.swift in Sources */,
 				A240E4B520D0B88C0045DD0E /* UIImageViewX.swift in Sources */,
 				A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */,
@@ -404,22 +342,16 @@
 				A22456B4212B08ED0094B789 /* API.swift in Sources */,
 				A240E4B320D0B88C0045DD0E /* UIViewAnchorPoint.swift in Sources */,
 				A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */,
-				A2ACC25A20DB9BE200A58171 /* BindableX.swift in Sources */,
 				A240E4B820D0B88C0045DD0E /* UISliderX.swift in Sources */,
 				A217ECCF20D9EF3700C4D6E7 /* DiaryVC.swift in Sources */,
-				A2ACC25E20DB9C6600A58171 /* DiaryViewModel.swift in Sources */,
 				A240E4C320D0C7CF0045DD0E /* SignUpVC.swift in Sources */,
-				A2ACC26220DBAE5700A58171 /* DiaryModel.swift in Sources */,
 				A217ECD820D9F93D00C4D6E7 /* TableViewX.swift in Sources */,
 				A28E8B6320D2681A0078936E /* AppSyncManager.swift in Sources */,
 				A202DFF220D0FCE3002D8E77 /* AppDelegate.swift in Sources */,
 				A240E4BE20D0C0900045DD0E /* ViewControllerX.swift in Sources */,
 				A240E4B120D0B88C0045DD0E /* UIButtonX.swift in Sources */,
-				A2ACC25220DB65D800A58171 /* LoginModel.swift in Sources */,
 				A240E4B220D0B88C0045DD0E /* UILabelX.swift in Sources */,
 				A240E4AF20D0B88C0045DD0E /* UIViewXRadialGradient.swift in Sources */,
-				A2ACC25620DB66D800A58171 /* LoginViewModel.swift in Sources */,
-				A2ACC26020DBAE4B00A58171 /* SignupModel.swift in Sources */,
 				A240E4B020D0B88C0045DD0E /* UITextFieldX.swift in Sources */,
 				A22CE9BB20D0A97700FFFD8E /* CognitoUserPoolManager.swift in Sources */,
 				A28E8B6520D2707C0078936E /* Constants.swift in Sources */,

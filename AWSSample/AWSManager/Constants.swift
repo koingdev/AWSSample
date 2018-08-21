@@ -31,6 +31,11 @@ let endPointURL = URL(string: "https://qc6lwxun7rdrfat4ajmma2jkq4.appsync-api.us
 
 final class CognitoAuthProvider: AWSCognitoUserPoolsAuthProvider {
     func getLatestAuthToken() -> String {
-        return CognitoUserPoolManager.sharedInstance.currentUser?.getSession().result?.accessToken?.tokenString ?? ""
+        return CognitoUserPoolManager.instance
+                                     .currentUser?
+                                     .getSession()
+                                     .result?
+                                     .accessToken?
+                                     .tokenString ?? ""
     }
 }

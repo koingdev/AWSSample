@@ -33,7 +33,7 @@ final class DiaryVC: UIViewController {
             }
         }
     }
-    fileprivate var author = CognitoUserPoolManager.sharedInstance.author
+    fileprivate var author = CognitoUserPoolManager.instance.author
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ final class DiaryVC: UIViewController {
         self.diaries.insert(diary, at: 0)
         // Online
         let mutation = InsertDiaryMutation(id: uniqueId, title: title, author: author)
-        AppSyncManager.sharedInstance?.perform(mutation: mutation, optimisticUpdate: { transaction in
+        AppSyncManager.instance().perform(mutation: mutation, optimisticUpdate: { transaction in
             do {
                 try transaction?.update(query: DiariesQuery()) { (data: inout DiariesQuery.Data) in
                     data.allDiaries?.append(diary)
@@ -90,7 +90,7 @@ final class DiaryVC: UIViewController {
     }
     
     fileprivate func loadAllDiaries(cachePolicy: CachePolicy) {
-        AppSyncManager.sharedInstance?.fetch(query: DiariesQuery(), cachePolicy: cachePolicy) { (res, err) in
+        AppSyncManager.instance().fetch(query: DiariesQuery(), cachePolicy: cachePolicy) { (res, err) in
             if let diaries = res?.data?.allDiaries {
                 self.diaries = diaries
             } else {
@@ -103,7 +103,7 @@ final class DiaryVC: UIViewController {
         let subscription = OnSubscribeSubscription(author: author)
         print("Starting subscription...")
         do {
-            onSubscribe = try AppSyncManager.sharedInstance?.subscribe(subscription: subscription) { (result, transaction, error) in
+            onSubscribe = try AppSyncManager.instance().subscribe(subscription: subscription) { (result, transaction, error) in
                 if let result = result {
                     print("Received new data")
                     // Store a reference to the new object

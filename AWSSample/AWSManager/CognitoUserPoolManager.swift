@@ -25,7 +25,7 @@ final class CognitoUserPoolManager {
     //MARK: -
     ////////////////////////////////////////////////////////////////
 
-    static let sharedInstance: CognitoUserPoolManager = CognitoUserPoolManager()
+    static let instance: CognitoUserPoolManager = CognitoUserPoolManager()
 
     private init() {
         let serviceConfiguration = AWSServiceConfiguration(region: region, credentialsProvider: nil)
@@ -46,7 +46,6 @@ final class CognitoUserPoolManager {
     ////////////////////////////////////////////////////////////////
 
     func login(username: String, password: String, completion: @escaping (Error?) -> Void) {
-        AppSyncManager.sharedInstance?.httpTransport?.customHeader = username
         author = username
         let user = userPool?.getUser(username)
         let task = user?.getSession(username, password: password, validationData: nil)
