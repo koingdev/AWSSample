@@ -46,6 +46,7 @@ final class CognitoUserPoolManager {
     ////////////////////////////////////////////////////////////////
 
     func login(username: String, password: String, completion: @escaping (Error?) -> Void) {
+        AppSyncManager.sharedInstance?.httpTransport?.customHeader = username
         author = username
         let user = userPool?.getUser(username)
         let task = user?.getSession(username, password: password, validationData: nil)

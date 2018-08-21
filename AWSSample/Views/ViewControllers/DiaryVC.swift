@@ -39,7 +39,8 @@ final class DiaryVC: UIViewController {
         super.viewDidLoad()
         setUpNavBar()
         setUpTableView()
-        loadAllDiaries(cachePolicy: .returnCacheDataDontFetch)
+        loadAllDiaries(cachePolicy: .fetchIgnoringCacheData)
+//        loadAllDiaries(cachePolicy: .returnCacheDataDontFetch)
     }
     
     fileprivate func setUpTableView() {

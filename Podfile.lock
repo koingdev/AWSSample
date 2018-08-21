@@ -20,16 +20,6 @@ DEPENDENCIES:
   - AWSCognito
   - AWSCognitoIdentityProvider
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - AWSAppSync
-    - AWSCognito
-    - AWSCognitoIdentityProvider
-    - AWSCognitoIdentityProviderASF
-    - AWSCore
-    - ReachabilitySwift
-    - SQLite.swift
-
 SPEC CHECKSUMS:
   AWSAppSync: eb2758d2a60518b6c814c119de511dbae1b3fa97
   AWSCognito: ddd3d4cb90dc0adb47acd199ca9bbe48ea1d18a7
@@ -41,4 +31,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7ff2c4ab00921487903b635b4d698a2def70fa12
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0
