@@ -6,11 +6,25 @@ query Diaries($author: String) {
   }
 }
 
+query AllDiaries {
+  allDiaries {
+    id
+    title
+    author
+  }
+}
+
 mutation InsertDiary($id: ID!, $title: String, $author: String) {
   insertDiary(id: $id, title: $title, author: $author) {
     id
     title
     author
+  }
+}
+
+mutation UpdateDiary($id: ID!, $title: String) {
+  updateDiary(id: $id, title: $title) {
+    id
   }
 }
 

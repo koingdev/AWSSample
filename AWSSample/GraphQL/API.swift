@@ -101,6 +101,98 @@ public final class DiariesQuery: GraphQLQuery {
   }
 }
 
+public final class AllDiariesQuery: GraphQLQuery {
+  public static let operationString =
+    "query AllDiaries {\n  allDiaries {\n    __typename\n    id\n    title\n    author\n  }\n}"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("allDiaries", type: .list(.object(AllDiary.selections))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(allDiaries: [AllDiary?]? = nil) {
+      self.init(snapshot: ["__typename": "Query", "allDiaries": allDiaries.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+    }
+
+    public var allDiaries: [AllDiary?]? {
+      get {
+        return (snapshot["allDiaries"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { AllDiary(snapshot: $0) } } }
+      }
+      set {
+        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "allDiaries")
+      }
+    }
+
+    public struct AllDiary: GraphQLSelectionSet {
+      public static let possibleTypes = ["Diary"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("title", type: .scalar(String.self)),
+        GraphQLField("author", type: .scalar(String.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, title: String? = nil, author: String? = nil) {
+        self.init(snapshot: ["__typename": "Diary", "id": id, "title": title, "author": author])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var title: String? {
+        get {
+          return snapshot["title"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var author: String? {
+        get {
+          return snapshot["author"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "author")
+        }
+      }
+    }
+  }
+}
+
 public final class InsertDiaryMutation: GraphQLMutation {
   public static let operationString =
     "mutation InsertDiary($id: ID!, $title: String, $author: String) {\n  insertDiary(id: $id, title: $title, author: $author) {\n    __typename\n    id\n    title\n    author\n  }\n}"
@@ -198,6 +290,87 @@ public final class InsertDiaryMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "author")
+        }
+      }
+    }
+  }
+}
+
+public final class UpdateDiaryMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation UpdateDiary($id: ID!, $title: String) {\n  updateDiary(id: $id, title: $title) {\n    __typename\n    id\n  }\n}"
+
+  public var id: GraphQLID
+  public var title: String?
+
+  public init(id: GraphQLID, title: String? = nil) {
+    self.id = id
+    self.title = title
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "title": title]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateDiary", arguments: ["id": GraphQLVariable("id"), "title": GraphQLVariable("title")], type: .object(UpdateDiary.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(updateDiary: UpdateDiary? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "updateDiary": updateDiary.flatMap { $0.snapshot }])
+    }
+
+    public var updateDiary: UpdateDiary? {
+      get {
+        return (snapshot["updateDiary"] as? Snapshot).flatMap { UpdateDiary(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "updateDiary")
+      }
+    }
+
+    public struct UpdateDiary: GraphQLSelectionSet {
+      public static let possibleTypes = ["Diary"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID) {
+        self.init(snapshot: ["__typename": "Diary", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
         }
       }
     }

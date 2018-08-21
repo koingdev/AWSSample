@@ -12,7 +12,6 @@
 		A217ECCF20D9EF3700C4D6E7 /* DiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217ECCE20D9EF3700C4D6E7 /* DiaryVC.swift */; };
 		A217ECD320D9F37800C4D6E7 /* awssample.graphql in Resources */ = {isa = PBXBuildFile; fileRef = A217ECD120D9F37800C4D6E7 /* awssample.graphql */; };
 		A217ECD420D9F37800C4D6E7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = A217ECD220D9F37800C4D6E7 /* schema.json */; };
-		A217ECD620D9F38300C4D6E7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217ECD520D9F38300C4D6E7 /* API.swift */; };
 		A217ECD820D9F93D00C4D6E7 /* TableViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217ECD720D9F93D00C4D6E7 /* TableViewX.swift */; };
 		A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CE9A920D0A80600FFFD8E /* LoginVC.swift */; };
 		A22CE9AD20D0A80600FFFD8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22CE9AB20D0A80600FFFD8E /* Main.storyboard */; };
@@ -31,6 +30,8 @@
 		A240E4B820D0B88C0045DD0E /* UISliderX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4AE20D0B88C0045DD0E /* UISliderX.swift */; };
 		A240E4BE20D0C0900045DD0E /* ViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4BD20D0C0900045DD0E /* ViewControllerX.swift */; };
 		A240E4C320D0C7CF0045DD0E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */; };
+		A26F258621269AE500E307A6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26F258521269AE400E307A6 /* API.swift */; };
+		A26F258821269AF100E307A6 /* schema.txt in Resources */ = {isa = PBXBuildFile; fileRef = A26F258721269AF100E307A6 /* schema.txt */; };
 		A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B5F20D265C20078936E /* AlertControllerX.swift */; };
 		A28E8B6320D2681A0078936E /* AppSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6220D2681A0078936E /* AppSyncManager.swift */; };
 		A28E8B6520D2707C0078936E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6420D2707C0078936E /* Constants.swift */; };
@@ -51,7 +52,6 @@
 		A217ECCE20D9EF3700C4D6E7 /* DiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVC.swift; sourceTree = "<group>"; };
 		A217ECD120D9F37800C4D6E7 /* awssample.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = awssample.graphql; sourceTree = "<group>"; };
 		A217ECD220D9F37800C4D6E7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		A217ECD520D9F38300C4D6E7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A217ECD720D9F93D00C4D6E7 /* TableViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewX.swift; sourceTree = "<group>"; };
 		A22CE9A420D0A80600FFFD8E /* AWSSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AWSSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22CE9A920D0A80600FFFD8E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -72,6 +72,8 @@
 		A240E4AE20D0B88C0045DD0E /* UISliderX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISliderX.swift; sourceTree = "<group>"; };
 		A240E4BD20D0C0900045DD0E /* ViewControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerX.swift; sourceTree = "<group>"; };
 		A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		A26F258521269AE400E307A6 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		A26F258721269AF100E307A6 /* schema.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.txt; sourceTree = "<group>"; };
 		A28E8B5F20D265C20078936E /* AlertControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerX.swift; sourceTree = "<group>"; };
 		A28E8B6220D2681A0078936E /* AppSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncManager.swift; sourceTree = "<group>"; };
 		A28E8B6420D2707C0078936E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -99,8 +101,10 @@
 		A217ECD020D9F37800C4D6E7 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				A26F258521269AE400E307A6 /* API.swift */,
 				A217ECD120D9F37800C4D6E7 /* awssample.graphql */,
 				A217ECD220D9F37800C4D6E7 /* schema.json */,
+				A26F258721269AF100E307A6 /* schema.txt */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -183,7 +187,6 @@
 				A28E8B6420D2707C0078936E /* Constants.swift */,
 				A22CE9BA20D0A97700FFFD8E /* CognitoUserPoolManager.swift */,
 				A28E8B6220D2681A0078936E /* AppSyncManager.swift */,
-				A217ECD520D9F38300C4D6E7 /* API.swift */,
 			);
 			path = AWSManager;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A22CE9B220D0A80700FFFD8E /* LaunchScreen.storyboard in Resources */,
+				A26F258821269AF100E307A6 /* schema.txt in Resources */,
 				A217ECD420D9F37800C4D6E7 /* schema.json in Resources */,
 				A22CE9AF20D0A80700FFFD8E /* Assets.xcassets in Resources */,
 				A22CE9AD20D0A80600FFFD8E /* Main.storyboard in Resources */,
@@ -401,6 +405,7 @@
 				A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */,
 				A240E4B720D0B88C0045DD0E /* UIVisualEffectViewX.swift in Sources */,
 				A240E4B620D0B88C0045DD0E /* UIViewX.swift in Sources */,
+				A26F258621269AE500E307A6 /* API.swift in Sources */,
 				A240E4B320D0B88C0045DD0E /* UIViewAnchorPoint.swift in Sources */,
 				A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */,
 				A2ACC25A20DB9BE200A58171 /* BindableX.swift in Sources */,
@@ -415,7 +420,6 @@
 				A240E4BE20D0C0900045DD0E /* ViewControllerX.swift in Sources */,
 				A240E4B120D0B88C0045DD0E /* UIButtonX.swift in Sources */,
 				A2ACC25220DB65D800A58171 /* LoginModel.swift in Sources */,
-				A217ECD620D9F38300C4D6E7 /* API.swift in Sources */,
 				A240E4B220D0B88C0045DD0E /* UILabelX.swift in Sources */,
 				A240E4AF20D0B88C0045DD0E /* UIViewXRadialGradient.swift in Sources */,
 				A2ACC25620DB66D800A58171 /* LoginViewModel.swift in Sources */,

@@ -10,6 +10,7 @@ type Mutation {
 
 type Query {
 	diaries(author: String): [Diary]
+	allDiaries: [Diary]
 }
 
 type Subscription {

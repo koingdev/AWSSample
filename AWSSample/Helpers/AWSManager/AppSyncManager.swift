@@ -13,18 +13,18 @@ final class AppSyncManager {
     
     private static var appSyncClient: AWSAppSyncClient!
     static var sharedInstance: AWSAppSyncClient? {
-        if appSyncClient == nil {
-            do {
-                let databaseURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(databasName)
-                let appSyncConfig = try? AWSAppSyncClientConfiguration(url: endPointURL,
-                                                                       serviceRegion: region,
-                                                                       userPoolsAuthProvider: CognitoAuthProvider(),
-                                                                       databaseURL: databaseURL)
-                appSyncClient = try AWSAppSyncClient(appSyncConfig: appSyncConfig!)
-                appSyncClient?.apolloClient?.cacheKeyForObject = { $0["id"] }
-            } catch {
-                print("Error initializing AppSync client. \(error)")
-            }
+        do {
+            let tmpUrl = URL(fileURLWithPath: NSTemporaryDirectory())
+            let databaseURL = tmpUrl.appendingPathComponent(databasName)
+            print(tmpUrl.absoluteString)
+            let appSyncConfig = try? AWSAppSyncClientConfiguration(url: endPointURL,
+                                                                   serviceRegion: region,
+                                                                   userPoolsAuthProvider: CognitoAuthProvider(),
+                                                                   databaseURL: databaseURL)
+            appSyncClient = try AWSAppSyncClient(appSyncConfig: appSyncConfig!)
+            appSyncClient?.apolloClient?.cacheKeyForObject = { $0["id"] }
+        } catch {
+            print("Error initializing AppSync client. \(error)")
         }
         return appSyncClient
     }
