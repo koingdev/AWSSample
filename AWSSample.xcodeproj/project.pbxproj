@@ -13,12 +13,11 @@
 		A217ECD320D9F37800C4D6E7 /* awssample.graphql in Resources */ = {isa = PBXBuildFile; fileRef = A217ECD120D9F37800C4D6E7 /* awssample.graphql */; };
 		A217ECD420D9F37800C4D6E7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = A217ECD220D9F37800C4D6E7 /* schema.json */; };
 		A217ECD820D9F93D00C4D6E7 /* TableViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A217ECD720D9F93D00C4D6E7 /* TableViewX.swift */; };
-		A22456B4212B08ED0094B789 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22456B3212B08ED0094B789 /* API.swift */; };
 		A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CE9A920D0A80600FFFD8E /* LoginVC.swift */; };
 		A22CE9AD20D0A80600FFFD8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22CE9AB20D0A80600FFFD8E /* Main.storyboard */; };
 		A22CE9AF20D0A80700FFFD8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A22CE9AE20D0A80700FFFD8E /* Assets.xcassets */; };
 		A22CE9B220D0A80700FFFD8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22CE9B020D0A80700FFFD8E /* LaunchScreen.storyboard */; };
-		A22CE9BB20D0A97700FFFD8E /* CognitoUserPoolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CE9BA20D0A97700FFFD8E /* CognitoUserPoolManager.swift */; };
+		A22CE9BB20D0A97700FFFD8E /* CognitoUserPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22CE9BA20D0A97700FFFD8E /* CognitoUserPool.swift */; };
 		A240E4AF20D0B88C0045DD0E /* UIViewXRadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4A520D0B88C0045DD0E /* UIViewXRadialGradient.swift */; };
 		A240E4B020D0B88C0045DD0E /* UITextFieldX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4A620D0B88C0045DD0E /* UITextFieldX.swift */; };
 		A240E4B120D0B88C0045DD0E /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4A720D0B88C0045DD0E /* UIButtonX.swift */; };
@@ -31,8 +30,9 @@
 		A240E4B820D0B88C0045DD0E /* UISliderX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4AE20D0B88C0045DD0E /* UISliderX.swift */; };
 		A240E4BE20D0C0900045DD0E /* ViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4BD20D0C0900045DD0E /* ViewControllerX.swift */; };
 		A240E4C320D0C7CF0045DD0E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */; };
+		A2417733213993E10038B0A7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2417732213993E10038B0A7 /* API.swift */; };
 		A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B5F20D265C20078936E /* AlertControllerX.swift */; };
-		A28E8B6320D2681A0078936E /* AppSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6220D2681A0078936E /* AppSyncManager.swift */; };
+		A28E8B6320D2681A0078936E /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6220D2681A0078936E /* Apollo.swift */; };
 		A28E8B6520D2707C0078936E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6420D2707C0078936E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,14 +45,13 @@
 		A217ECD120D9F37800C4D6E7 /* awssample.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = awssample.graphql; sourceTree = "<group>"; };
 		A217ECD220D9F37800C4D6E7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		A217ECD720D9F93D00C4D6E7 /* TableViewX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewX.swift; sourceTree = "<group>"; };
-		A22456B3212B08ED0094B789 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = AWSSample/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
 		A22CE9A420D0A80600FFFD8E /* AWSSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AWSSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22CE9A920D0A80600FFFD8E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A22CE9AC20D0A80600FFFD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A22CE9AE20D0A80700FFFD8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A22CE9B120D0A80700FFFD8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A22CE9B320D0A80700FFFD8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A22CE9BA20D0A97700FFFD8E /* CognitoUserPoolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoUserPoolManager.swift; sourceTree = "<group>"; };
+		A22CE9BA20D0A97700FFFD8E /* CognitoUserPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoUserPool.swift; sourceTree = "<group>"; };
 		A240E4A520D0B88C0045DD0E /* UIViewXRadialGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewXRadialGradient.swift; sourceTree = "<group>"; };
 		A240E4A620D0B88C0045DD0E /* UITextFieldX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldX.swift; sourceTree = "<group>"; };
 		A240E4A720D0B88C0045DD0E /* UIButtonX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
@@ -65,8 +64,9 @@
 		A240E4AE20D0B88C0045DD0E /* UISliderX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISliderX.swift; sourceTree = "<group>"; };
 		A240E4BD20D0C0900045DD0E /* ViewControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerX.swift; sourceTree = "<group>"; };
 		A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		A2417732213993E10038B0A7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = GraphQL/API.swift; sourceTree = "<group>"; };
 		A28E8B5F20D265C20078936E /* AlertControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerX.swift; sourceTree = "<group>"; };
-		A28E8B6220D2681A0078936E /* AppSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncManager.swift; sourceTree = "<group>"; };
+		A28E8B6220D2681A0078936E /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
 		A28E8B6420D2707C0078936E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,10 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				A2ACC25020DB659C00A58171 /* Helpers */,
-				A28E8B6120D267DE0078936E /* AWSManager */,
+				A28E8B6120D267DE0078936E /* Services */,
 				A240E4BF20D0C0C40045DD0E /* ViewControllers */,
 				A2ACC24F20DB655B00A58171 /* Storyboards */,
 				A217ECD020D9F37800C4D6E7 /* GraphQL */,
+				A28E8B6420D2707C0078936E /* Constants.swift */,
+				A2417732213993E10038B0A7 /* API.swift */,
 				A202DFF120D0FCE3002D8E77 /* AppDelegate.swift */,
 				A22CE9B020D0A80700FFFD8E /* LaunchScreen.storyboard */,
 				A22CE9AE20D0A80700FFFD8E /* Assets.xcassets */,
@@ -162,15 +164,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		A28E8B6120D267DE0078936E /* AWSManager */ = {
+		A28E8B6120D267DE0078936E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A28E8B6420D2707C0078936E /* Constants.swift */,
-				A22CE9BA20D0A97700FFFD8E /* CognitoUserPoolManager.swift */,
-				A28E8B6220D2681A0078936E /* AppSyncManager.swift */,
-				A22456B3212B08ED0094B789 /* API.swift */,
+				A28E8B6220D2681A0078936E /* Apollo.swift */,
+				A22CE9BA20D0A97700FFFD8E /* CognitoUserPool.swift */,
 			);
-			path = AWSManager;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A2ACC24F20DB655B00A58171 /* Storyboards */ = {
@@ -304,23 +304,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AWSSample/Pods-AWSSample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AWSAppSync/AWSAppSync.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
-				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
-				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAppSync.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -339,21 +335,21 @@
 				A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */,
 				A240E4B720D0B88C0045DD0E /* UIVisualEffectViewX.swift in Sources */,
 				A240E4B620D0B88C0045DD0E /* UIViewX.swift in Sources */,
-				A22456B4212B08ED0094B789 /* API.swift in Sources */,
 				A240E4B320D0B88C0045DD0E /* UIViewAnchorPoint.swift in Sources */,
 				A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */,
 				A240E4B820D0B88C0045DD0E /* UISliderX.swift in Sources */,
 				A217ECCF20D9EF3700C4D6E7 /* DiaryVC.swift in Sources */,
 				A240E4C320D0C7CF0045DD0E /* SignUpVC.swift in Sources */,
 				A217ECD820D9F93D00C4D6E7 /* TableViewX.swift in Sources */,
-				A28E8B6320D2681A0078936E /* AppSyncManager.swift in Sources */,
+				A28E8B6320D2681A0078936E /* Apollo.swift in Sources */,
 				A202DFF220D0FCE3002D8E77 /* AppDelegate.swift in Sources */,
+				A2417733213993E10038B0A7 /* API.swift in Sources */,
 				A240E4BE20D0C0900045DD0E /* ViewControllerX.swift in Sources */,
 				A240E4B120D0B88C0045DD0E /* UIButtonX.swift in Sources */,
 				A240E4B220D0B88C0045DD0E /* UILabelX.swift in Sources */,
 				A240E4AF20D0B88C0045DD0E /* UIViewXRadialGradient.swift in Sources */,
 				A240E4B020D0B88C0045DD0E /* UITextFieldX.swift in Sources */,
-				A22CE9BB20D0A97700FFFD8E /* CognitoUserPoolManager.swift in Sources */,
+				A22CE9BB20D0A97700FFFD8E /* CognitoUserPool.swift in Sources */,
 				A28E8B6520D2707C0078936E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

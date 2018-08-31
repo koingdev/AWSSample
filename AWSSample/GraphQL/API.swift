@@ -1,93 +1,129 @@
 //  This file was automatically generated and should not be edited.
 
-import AWSAppSync
+import Apollo
 
 public final class DiariesQuery: GraphQLQuery {
-  public static let operationString =
-    "query Diaries {\n  allDiaries {\n    __typename\n    id\n    title\n    author\n  }\n}"
+  public let operationDefinition =
+    "query Diaries($author: String) {\n  diaries(author: $author) {\n    __typename\n    ...diary\n  }\n}"
 
-  public init() {
+  public var queryDocument: String { return operationDefinition.appending(Diary.fragmentDefinition) }
+
+  public var author: String?
+
+  public init(author: String? = nil) {
+    self.author = author
+  }
+
+  public var variables: GraphQLMap? {
+    return ["author": author]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("allDiaries", type: .list(.object(AllDiary.selections))),
+      GraphQLField("diaries", arguments: ["author": GraphQLVariable("author")], type: .list(.object(Diary.selections))),
     ]
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
-    public init(allDiaries: [AllDiary?]? = nil) {
-      self.init(snapshot: ["__typename": "Query", "allDiaries": allDiaries.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+    public init(diaries: [Diary?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "diaries": diaries.flatMap { (value: [Diary?]) -> [ResultMap?] in value.map { (value: Diary?) -> ResultMap? in value.flatMap { (value: Diary) -> ResultMap in value.resultMap } } }])
     }
 
-    public var allDiaries: [AllDiary?]? {
+    public var diaries: [Diary?]? {
       get {
-        return (snapshot["allDiaries"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { AllDiary(snapshot: $0) } } }
+        return (resultMap["diaries"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Diary?] in value.map { (value: ResultMap?) -> Diary? in value.flatMap { (value: ResultMap) -> Diary in Diary(unsafeResultMap: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "allDiaries")
+        resultMap.updateValue(newValue.flatMap { (value: [Diary?]) -> [ResultMap?] in value.map { (value: Diary?) -> ResultMap? in value.flatMap { (value: Diary) -> ResultMap in value.resultMap } } }, forKey: "diaries")
       }
     }
 
-    public struct AllDiary: GraphQLSelectionSet {
+    public struct Diary: GraphQLSelectionSet {
       public static let possibleTypes = ["Diary"]
 
       public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("title", type: .scalar(String.self)),
         GraphQLField("author", type: .scalar(String.self)),
       ]
 
-      public var snapshot: Snapshot
+      public private(set) var resultMap: ResultMap
 
-      public init(snapshot: Snapshot) {
-        self.snapshot = snapshot
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
 
       public init(id: GraphQLID, title: String? = nil, author: String? = nil) {
-        self.init(snapshot: ["__typename": "Diary", "id": id, "title": title, "author": author])
+        self.init(unsafeResultMap: ["__typename": "Diary", "id": id, "title": title, "author": author])
       }
 
       public var __typename: String {
         get {
-          return snapshot["__typename"]! as! String
+          return resultMap["__typename"]! as! String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "__typename")
+          resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
       public var id: GraphQLID {
         get {
-          return snapshot["id"]! as! GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
-          snapshot.updateValue(newValue, forKey: "id")
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
       public var title: String? {
         get {
-          return snapshot["title"] as? String
+          return resultMap["title"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "title")
+          resultMap.updateValue(newValue, forKey: "title")
         }
       }
 
       public var author: String? {
         get {
-          return snapshot["author"] as? String
+          return resultMap["author"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "author")
+          resultMap.updateValue(newValue, forKey: "author")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var diary: Diary {
+          get {
+            return Diary(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
         }
       }
     }
@@ -95,8 +131,10 @@ public final class DiariesQuery: GraphQLQuery {
 }
 
 public final class InsertDiaryMutation: GraphQLMutation {
-  public static let operationString =
-    "mutation InsertDiary($id: ID!, $title: String, $author: String) {\n  insertDiary(id: $id, title: $title, author: $author) {\n    __typename\n    id\n    title\n    author\n  }\n}"
+  public let operationDefinition =
+    "mutation InsertDiary($id: ID!, $title: String, $author: String) {\n  insertDiary(id: $id, title: $title, author: $author) {\n    __typename\n    ...diary\n  }\n}"
+
+  public var queryDocument: String { return operationDefinition.appending(Diary.fragmentDefinition) }
 
   public var id: GraphQLID
   public var title: String?
@@ -119,22 +157,22 @@ public final class InsertDiaryMutation: GraphQLMutation {
       GraphQLField("insertDiary", arguments: ["id": GraphQLVariable("id"), "title": GraphQLVariable("title"), "author": GraphQLVariable("author")], type: .object(InsertDiary.selections)),
     ]
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public init(insertDiary: InsertDiary? = nil) {
-      self.init(snapshot: ["__typename": "Mutation", "insertDiary": insertDiary.flatMap { $0.snapshot }])
+      self.init(unsafeResultMap: ["__typename": "Mutation", "insertDiary": insertDiary.flatMap { (value: InsertDiary) -> ResultMap in value.resultMap }])
     }
 
     public var insertDiary: InsertDiary? {
       get {
-        return (snapshot["insertDiary"] as? Snapshot).flatMap { InsertDiary(snapshot: $0) }
+        return (resultMap["insertDiary"] as? ResultMap).flatMap { InsertDiary(unsafeResultMap: $0) }
       }
       set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "insertDiary")
+        resultMap.updateValue(newValue?.resultMap, forKey: "insertDiary")
       }
     }
 
@@ -143,54 +181,81 @@ public final class InsertDiaryMutation: GraphQLMutation {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("title", type: .scalar(String.self)),
         GraphQLField("author", type: .scalar(String.self)),
       ]
 
-      public var snapshot: Snapshot
+      public private(set) var resultMap: ResultMap
 
-      public init(snapshot: Snapshot) {
-        self.snapshot = snapshot
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
 
       public init(id: GraphQLID, title: String? = nil, author: String? = nil) {
-        self.init(snapshot: ["__typename": "Diary", "id": id, "title": title, "author": author])
+        self.init(unsafeResultMap: ["__typename": "Diary", "id": id, "title": title, "author": author])
       }
 
       public var __typename: String {
         get {
-          return snapshot["__typename"]! as! String
+          return resultMap["__typename"]! as! String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "__typename")
+          resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
       public var id: GraphQLID {
         get {
-          return snapshot["id"]! as! GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
-          snapshot.updateValue(newValue, forKey: "id")
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
       public var title: String? {
         get {
-          return snapshot["title"] as? String
+          return resultMap["title"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "title")
+          resultMap.updateValue(newValue, forKey: "title")
         }
       }
 
       public var author: String? {
         get {
-          return snapshot["author"] as? String
+          return resultMap["author"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "author")
+          resultMap.updateValue(newValue, forKey: "author")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var diary: Diary {
+          get {
+            return Diary(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
         }
       }
     }
@@ -198,8 +263,10 @@ public final class InsertDiaryMutation: GraphQLMutation {
 }
 
 public final class OnSubscribeSubscription: GraphQLSubscription {
-  public static let operationString =
-    "subscription OnSubscribe($author: String) {\n  onSubscribe(author: $author) {\n    __typename\n    id\n    title\n    author\n  }\n}"
+  public let operationDefinition =
+    "subscription OnSubscribe($author: String) {\n  onSubscribe(author: $author) {\n    __typename\n    ...diary\n  }\n}"
+
+  public var queryDocument: String { return operationDefinition.appending(Diary.fragmentDefinition) }
 
   public var author: String?
 
@@ -218,22 +285,22 @@ public final class OnSubscribeSubscription: GraphQLSubscription {
       GraphQLField("onSubscribe", arguments: ["author": GraphQLVariable("author")], type: .object(OnSubscribe.selections)),
     ]
 
-    public var snapshot: Snapshot
+    public private(set) var resultMap: ResultMap
 
-    public init(snapshot: Snapshot) {
-      self.snapshot = snapshot
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
     }
 
     public init(onSubscribe: OnSubscribe? = nil) {
-      self.init(snapshot: ["__typename": "Subscription", "onSubscribe": onSubscribe.flatMap { $0.snapshot }])
+      self.init(unsafeResultMap: ["__typename": "Subscription", "onSubscribe": onSubscribe.flatMap { (value: OnSubscribe) -> ResultMap in value.resultMap }])
     }
 
     public var onSubscribe: OnSubscribe? {
       get {
-        return (snapshot["onSubscribe"] as? Snapshot).flatMap { OnSubscribe(snapshot: $0) }
+        return (resultMap["onSubscribe"] as? ResultMap).flatMap { OnSubscribe(unsafeResultMap: $0) }
       }
       set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "onSubscribe")
+        resultMap.updateValue(newValue?.resultMap, forKey: "onSubscribe")
       }
     }
 
@@ -242,56 +309,143 @@ public final class OnSubscribeSubscription: GraphQLSubscription {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("title", type: .scalar(String.self)),
         GraphQLField("author", type: .scalar(String.self)),
       ]
 
-      public var snapshot: Snapshot
+      public private(set) var resultMap: ResultMap
 
-      public init(snapshot: Snapshot) {
-        self.snapshot = snapshot
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
 
       public init(id: GraphQLID, title: String? = nil, author: String? = nil) {
-        self.init(snapshot: ["__typename": "Diary", "id": id, "title": title, "author": author])
+        self.init(unsafeResultMap: ["__typename": "Diary", "id": id, "title": title, "author": author])
       }
 
       public var __typename: String {
         get {
-          return snapshot["__typename"]! as! String
+          return resultMap["__typename"]! as! String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "__typename")
+          resultMap.updateValue(newValue, forKey: "__typename")
         }
       }
 
       public var id: GraphQLID {
         get {
-          return snapshot["id"]! as! GraphQLID
+          return resultMap["id"]! as! GraphQLID
         }
         set {
-          snapshot.updateValue(newValue, forKey: "id")
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 
       public var title: String? {
         get {
-          return snapshot["title"] as? String
+          return resultMap["title"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "title")
+          resultMap.updateValue(newValue, forKey: "title")
         }
       }
 
       public var author: String? {
         get {
-          return snapshot["author"] as? String
+          return resultMap["author"] as? String
         }
         set {
-          snapshot.updateValue(newValue, forKey: "author")
+          resultMap.updateValue(newValue, forKey: "author")
         }
       }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var diary: Diary {
+          get {
+            return Diary(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+      }
+    }
+  }
+}
+
+public struct Diary: GraphQLFragment {
+  public static let fragmentDefinition =
+    "fragment diary on Diary {\n  __typename\n  id\n  title\n  author\n}"
+
+  public static let possibleTypes = ["Diary"]
+
+  public static let selections: [GraphQLSelection] = [
+    GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+    GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+    GraphQLField("title", type: .scalar(String.self)),
+    GraphQLField("author", type: .scalar(String.self)),
+  ]
+
+  public private(set) var resultMap: ResultMap
+
+  public init(unsafeResultMap: ResultMap) {
+    self.resultMap = unsafeResultMap
+  }
+
+  public init(id: GraphQLID, title: String? = nil, author: String? = nil) {
+    self.init(unsafeResultMap: ["__typename": "Diary", "id": id, "title": title, "author": author])
+  }
+
+  public var __typename: String {
+    get {
+      return resultMap["__typename"]! as! String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "__typename")
+    }
+  }
+
+  public var id: GraphQLID {
+    get {
+      return resultMap["id"]! as! GraphQLID
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var title: String? {
+    get {
+      return resultMap["title"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "title")
+    }
+  }
+
+  public var author: String? {
+    get {
+      return resultMap["author"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "author")
     }
   }
 }

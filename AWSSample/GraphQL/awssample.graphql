@@ -1,23 +1,23 @@
-query Diaries {
-  allDiaries {
-    id
-    title
-    author
+query Diaries($author: String) {
+  diaries(author: $author) {
+    ...diary
   }
 }
 
 mutation InsertDiary($id: ID!, $title: String, $author: String) {
   insertDiary(id: $id, title: $title, author: $author) {
-    id
-    title
-    author
+    ...diary
   }
 }
 
 subscription OnSubscribe($author: String) {
   onSubscribe(author: $author) {
-    id
-    title
-    author
+    ...diary
   }
+}
+
+fragment diary on Diary {
+  id
+  title
+  author
 }

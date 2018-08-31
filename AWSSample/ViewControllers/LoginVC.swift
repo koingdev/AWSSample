@@ -13,6 +13,12 @@ final class LoginVC: UIViewController {
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        txtUsername.text = "koingdev"
+        txtPassword.text = "123456"
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         view.endEditing(true)
@@ -20,7 +26,7 @@ final class LoginVC: UIViewController {
     
     @IBAction func onLogin(_ sender: Any) {
         guard let username = txtUsername.text, let password = txtPassword.text else { return }
-        CognitoUserPoolManager.instance.login(username: username, password: password) { error in
+        CognitoUserPool.instance.login(username: username, password: password) { error in
             DispatchQueue.main.async {
                 if error == nil {
                     UIAlertController.alertOkay(title: "Login succeed!", message: "Thanks you...!") { [weak self] _ in

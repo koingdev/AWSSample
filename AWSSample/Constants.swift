@@ -8,7 +8,6 @@
 
 import Foundation
 import AWSCore
-import AWSAppSync
 
 ////////////////////////////////////////////////////////////////
 //MARK: -
@@ -17,10 +16,10 @@ import AWSAppSync
 ////////////////////////////////////////////////////////////////
 
 let region: AWSRegionType = .USEast1
+let API_KEY = "???"
 let userPoolID = "us-east-1_9XCmAJF4q"
 let appClientID = "1r96771echb75omkids99bovs1"
 let appClientSecret = "o76k6jgobrlh1an7v9alnqqakicb6jbusik8fm49iq863r21bcm"
-let databasName = "appsync-local-db"
 let endPointURL = URL(string: "https://qc6lwxun7rdrfat4ajmma2jkq4.appsync-api.us-east-1.amazonaws.com/graphql")!
 
 ////////////////////////////////////////////////////////////////
@@ -29,9 +28,9 @@ let endPointURL = URL(string: "https://qc6lwxun7rdrfat4ajmma2jkq4.appsync-api.us
 //MARK: -
 ////////////////////////////////////////////////////////////////
 
-final class CognitoAuthProvider: AWSCognitoUserPoolsAuthProvider {
-    func getLatestAuthToken() -> String {
-        return CognitoUserPoolManager.instance
+final class CognitoAuthProvider {
+    static func getLatestAuthToken() -> String {
+        return CognitoUserPool.instance
                                      .currentUser?
                                      .getSession()
                                      .result?

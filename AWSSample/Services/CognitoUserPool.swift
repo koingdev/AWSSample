@@ -1,5 +1,5 @@
 //
-//  CognitoUserPoolManager.swift
+//  CognitoUserPool.swift
 //  AWSSample
 //
 //  Created by KoingDev on 6/13/18.
@@ -9,7 +9,7 @@
 import Foundation
 import AWSCognitoIdentityProvider
 
-final class CognitoUserPoolManager {
+final class CognitoUserPool {
 
     var userPool: AWSCognitoIdentityUserPool?
     var author: String!
@@ -25,7 +25,7 @@ final class CognitoUserPoolManager {
     //MARK: -
     ////////////////////////////////////////////////////////////////
 
-    static let instance: CognitoUserPoolManager = CognitoUserPoolManager()
+    static let instance: CognitoUserPool = CognitoUserPool()
 
     private init() {
         let serviceConfiguration = AWSServiceConfiguration(region: region, credentialsProvider: nil)

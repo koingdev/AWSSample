@@ -5,7 +5,7 @@ target 'AWSSample' do
 
   use_frameworks!
 
-  pod 'AWSAppSync'
+  pod 'Apollo'
   pod 'AWSCognito'
   pod 'AWSCognitoIdentityProvider'
 

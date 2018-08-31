@@ -17,7 +17,7 @@ final class SignUpVC: UIViewController {
 
     @IBAction func onCreateAccount(_ sender: Any) {
         guard let username = txtUsername.text, let password = txtPassword.text, let emailAddress = txtEmail.text else { return }
-        CognitoUserPoolManager.instance.signup(username: username, password: password, emailAddress: emailAddress) { error, user in
+        CognitoUserPool.instance.signup(username: username, password: password, emailAddress: emailAddress) { error, user in
             DispatchQueue.main.async { [weak self] in
                 guard let `self` = self else { return }
                 if let error = error {
@@ -40,7 +40,7 @@ final class SignUpVC: UIViewController {
     fileprivate func requestConfirmCode(_ user: AWSCognitoIdentityUser) {
         UIAlertController.alertTextField(title: "Confirmation", message: "Type the 6-digit code that has been sent to your email.") { texts in
             let confirmationCode = texts[0]
-            CognitoUserPoolManager.instance.confirmSignup(user: user, confirmationCode: confirmationCode) { error in
+            CognitoUserPool.instance.confirmSignup(user: user, confirmationCode: confirmationCode) { error in
                 DispatchQueue.main.async { [weak self] in
                     guard let `self` = self else { return }
                     if let error = error {
