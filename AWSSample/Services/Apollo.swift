@@ -22,4 +22,6 @@ final class Apollo {
         return apollo
     }
     
+    private init() { }
+    
 }
