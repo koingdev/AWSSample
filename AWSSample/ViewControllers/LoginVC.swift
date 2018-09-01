@@ -29,12 +29,9 @@ final class LoginVC: UIViewController {
         CognitoUserPool.instance.login(username: username, password: password) { error in
             DispatchQueue.main.async {
                 if error == nil {
-                    UIAlertController.alertOkay(title: "Login succeed!", message: "Thanks you...!") { [weak self] _ in
-                        guard let `self` = self else { return }
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        let diaryVC = sb.instantiateViewController(withIdentifier: "DiaryVC") as! DiaryVC
-                        self.navigationController?.pushViewController(diaryVC, animated: true)
-                    }
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = sb.instantiateViewController(withIdentifier: "ChoiceVC") as! ChoiceVC
+                    self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     UIAlertController.alertOkay(title: "Login failed!", message: error?.localizedDescription ?? "")
                 }

@@ -8,20 +8,27 @@
 
 import UIKit
 import Apollo
+import RealmSwift
 
-struct DiaryModel {
+class DiaryModel: Object {
     
-    let id: String
-    let title: String
-    let author: String
+    @objc dynamic var id: String!
+    @objc dynamic var title: String!
+    @objc dynamic var author: String!
     
-    init(id: String, title: String, author: String) {
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    convenience init(id: String, title: String, author: String) {
+        self.init()
         self.id = id
         self.title = title
         self.author = author
     }
-    
-    init(diary: DiariesQuery.Data.Diary) {
+
+    convenience init(diary: DiariesQuery.Data.Diary) {
+        self.init()
         id = diary.id
         title = diary.title ?? ""
         author = diary.author ?? ""
@@ -43,6 +50,12 @@ final class DiaryCell: UITableViewCell {
 
 final class DiaryVC: UIViewController {
 
+    static var instance: DiaryVC {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let diaryVC = sb.instantiateViewController(withIdentifier: "DiaryVC") as! DiaryVC
+        return diaryVC
+    }
+    var shouldFetchFromServer = true
     @IBOutlet weak var tableView: UITableView!
     private var diaries = [DiaryModel]() {
         didSet {
@@ -56,49 +69,45 @@ final class DiaryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         tableView.dataSource = self
-//        setUpNavBar()
-        loadAllDiaries(cachePolicy: .fetchIgnoringCacheData)
+        setUpNavBar()
+        if shouldFetchFromServer {
+            loadAllDiaries()
+        } else {
+//            loadAllDiaries()
+        }
+    }
+    
+    fileprivate func setUpNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(addTapped))
     }
 
-//    fileprivate func setUpNavBar() {
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add",
-//                                                            style: .plain,
-//                                                            target: self,
-//                                                            action: #selector(addTapped))
-//    }
-//
-//    @objc fileprivate func addTapped() {
-//        UIAlertController.alertTextField(title: "Enter your diary") { [unowned self] texts in
-//            let title = texts[0]
-//            self.insertDiary(title: title)
-//        }
-//    }
+    @objc fileprivate func addTapped() {
+        UIAlertController.alertTextField(title: "Enter your diary") { [unowned self] texts in
+            let title = texts[0]
+            self.insertDiary(title: title)
+        }
+    }
     
-//    fileprivate func insertDiary(title: String) {
-//        let uniqueId = UUID().uuidString
-//        // Offline
-//        let diary = DiariesQuery.Data.AllDiary.init(id: uniqueId, title: title, author: author)
-//        self.diaries.insert(diary, at: 0)
-//        // Online
-//        let mutation = InsertDiaryMutation(id: uniqueId, title: title, author: author)
-//        AppSyncManager.instance().perform(mutation: mutation, optimisticUpdate: { transaction in
-//            do {
-//                try transaction?.update(query: DiariesQuery()) { (data: inout DiariesQuery.Data) in
-//                    data.allDiaries?.append(diary)
-//                }
-//            } catch {
-//                print("\nError optimistic update...\n")
-//            }
-//        })
-//    }
-//    
-    fileprivate func loadAllDiaries(cachePolicy: CachePolicy) {
-        Apollo.instance.client.fetch(query: DiariesQuery(author: author), cachePolicy: cachePolicy) { res, err in
-            if let diaries = res?.data?.diaries?.compactMap({$0}) {
+    fileprivate func insertDiary(title: String) {
+        let uniqueId = UUID().uuidString
+        let diary = DiaryModel(id: uniqueId, title: title, author: author)
+        diaries.append(diary)
+        let mutation = InsertDiaryMutation(id: uniqueId, title: title, author: author)
+        Apollo.instance.perform(mutation: mutation, realmCaching: diary) {
+            print("INSERT SUCCEED...!")
+        }
+    }
+    
+    // TODO: Cache Policy
+    fileprivate func loadAllDiaries() {
+        Apollo.instance.fetch(query: DiariesQuery(author: author)) { result in
+            if let diaries = result.diaries?.compactMap({$0}) {
                 self.diaries = diaries.map(DiaryModel.init)
-            } else {
-                print("\n---------- [ \(err?.localizedDescription ?? "") ] ----------\n")
             }
         }
     }

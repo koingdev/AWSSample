@@ -8,5 +8,7 @@ target 'AWSSample' do
   pod 'Apollo'
   pod 'AWSCognito'
   pod 'AWSCognitoIdentityProvider'
+  pod 'ReachabilitySwift'
+  pod 'RealmSwift'
 
 end

@@ -9,11 +9,19 @@ PODS:
     - AWSCore (= 2.6.22)
   - AWSCognitoIdentityProviderASF (1.0.1)
   - AWSCore (2.6.22)
+  - ReachabilitySwift (4.1.0)
+  - Realm (3.7.6):
+    - Realm/Headers (= 3.7.6)
+  - Realm/Headers (3.7.6)
+  - RealmSwift (3.7.6):
+    - Realm (= 3.7.6)
 
 DEPENDENCIES:
   - Apollo
   - AWSCognito
   - AWSCognitoIdentityProvider
+  - ReachabilitySwift
+  - RealmSwift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -22,6 +30,9 @@ SPEC REPOS:
     - AWSCognitoIdentityProvider
     - AWSCognitoIdentityProviderASF
     - AWSCore
+    - ReachabilitySwift
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Apollo: 39d1adfceb6f262fc58286ec9425fd7c332877fb
@@ -29,7 +40,10 @@ SPEC CHECKSUMS:
   AWSCognitoIdentityProvider: f7d15744ca3d70270de05a212e501f29a4a06307
   AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
   AWSCore: faae134779f0f6e46a8d426c0ccc02e34466b785
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
+  RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
 
-PODFILE CHECKSUM: e17207b7ce93ec6223e4e6fc03e69b8f01b1e75b
+PODFILE CHECKSUM: 602ff01e4db21cf8197973078c3baeada4cd3d1d
 
 COCOAPODS: 1.5.0

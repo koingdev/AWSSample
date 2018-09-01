@@ -18,8 +18,7 @@ final class SignUpVC: UIViewController {
     @IBAction func onCreateAccount(_ sender: Any) {
         guard let username = txtUsername.text, let password = txtPassword.text, let emailAddress = txtEmail.text else { return }
         CognitoUserPool.instance.signup(username: username, password: password, emailAddress: emailAddress) { error, user in
-            DispatchQueue.main.async { [weak self] in
-                guard let `self` = self else { return }
+            DispatchQueue.main.async { [unowned self] in
                 if let error = error {
                     UIAlertController.alertOkay(title: "Sign up failed!", message: error.localizedDescription)
                     return

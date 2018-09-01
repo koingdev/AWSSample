@@ -12,7 +12,7 @@ import AWSCognitoIdentityProvider
 final class CognitoUserPool {
 
     var userPool: AWSCognitoIdentityUserPool?
-    var author: String!
+    var author: String = ""
     var currentUser: AWSCognitoIdentityUser? {
         get {
             return userPool?.currentUser()

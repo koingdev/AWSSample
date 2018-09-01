@@ -31,6 +31,8 @@
 		A240E4BE20D0C0900045DD0E /* ViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4BD20D0C0900045DD0E /* ViewControllerX.swift */; };
 		A240E4C320D0C7CF0045DD0E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */; };
 		A2417733213993E10038B0A7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2417732213993E10038B0A7 /* API.swift */; };
+		A25A7406213A076F0054EBA5 /* NetworkListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25A7405213A076F0054EBA5 /* NetworkListener.swift */; };
+		A25A7408213A0F1F0054EBA5 /* ChoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25A7407213A0F1F0054EBA5 /* ChoiceVC.swift */; };
 		A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B5F20D265C20078936E /* AlertControllerX.swift */; };
 		A28E8B6320D2681A0078936E /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6220D2681A0078936E /* Apollo.swift */; };
 		A28E8B6520D2707C0078936E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6420D2707C0078936E /* Constants.swift */; };
@@ -65,6 +67,8 @@
 		A240E4BD20D0C0900045DD0E /* ViewControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerX.swift; sourceTree = "<group>"; };
 		A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		A2417732213993E10038B0A7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = GraphQL/API.swift; sourceTree = "<group>"; };
+		A25A7405213A076F0054EBA5 /* NetworkListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkListener.swift; sourceTree = "<group>"; };
+		A25A7407213A0F1F0054EBA5 /* ChoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceVC.swift; sourceTree = "<group>"; };
 		A28E8B5F20D265C20078936E /* AlertControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerX.swift; sourceTree = "<group>"; };
 		A28E8B6220D2681A0078936E /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
 		A28E8B6420D2707C0078936E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				A22CE9A920D0A80600FFFD8E /* LoginVC.swift */,
 				A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */,
+				A25A7407213A0F1F0054EBA5 /* ChoiceVC.swift */,
 				A217ECCE20D9EF3700C4D6E7 /* DiaryVC.swift */,
 			);
 			path = ViewControllers;
@@ -184,6 +189,7 @@
 		A2ACC25020DB659C00A58171 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A25A7405213A076F0054EBA5 /* NetworkListener.swift */,
 				A240E4A420D0B88C0045DD0E /* DesignableX */,
 				A240E4BA20D0C0300045DD0E /* Extensions */,
 			);
@@ -309,6 +315,9 @@
 				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -317,6 +326,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -336,6 +348,7 @@
 				A240E4B720D0B88C0045DD0E /* UIVisualEffectViewX.swift in Sources */,
 				A240E4B620D0B88C0045DD0E /* UIViewX.swift in Sources */,
 				A240E4B320D0B88C0045DD0E /* UIViewAnchorPoint.swift in Sources */,
+				A25A7406213A076F0054EBA5 /* NetworkListener.swift in Sources */,
 				A22CE9AA20D0A80600FFFD8E /* LoginVC.swift in Sources */,
 				A240E4B820D0B88C0045DD0E /* UISliderX.swift in Sources */,
 				A217ECCF20D9EF3700C4D6E7 /* DiaryVC.swift in Sources */,
@@ -351,6 +364,7 @@
 				A240E4B020D0B88C0045DD0E /* UITextFieldX.swift in Sources */,
 				A22CE9BB20D0A97700FFFD8E /* CognitoUserPool.swift in Sources */,
 				A28E8B6520D2707C0078936E /* Constants.swift in Sources */,
+				A25A7408213A0F1F0054EBA5 /* ChoiceVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,7 +512,7 @@
 				DEVELOPMENT_TEAM = 8W8M6CAUQE;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AWSSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KoingDev.AWSSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,7 +530,7 @@
 				DEVELOPMENT_TEAM = 8W8M6CAUQE;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AWSSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KoingDev.AWSSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
