@@ -10,7 +10,7 @@ import Apollo
 import Reachability
 import RealmSwift
 
-enum OperationStatus {
+enum ConnectionState {
     
     case ONLINE
     case OFFLINE
@@ -28,7 +28,7 @@ final class Apollo {
     static let instance = Apollo()
     private lazy var queue = DispatchQueue(label: "ApolloRealm")
     private lazy var realm = try! Realm()
-    private var operationStatus = OperationStatus.ONLINE
+    var connectionState = ConnectionState.ONLINE
     private var client: ApolloClient {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Content-Type" : "application/json"]
@@ -40,7 +40,7 @@ final class Apollo {
     }
     
     private init() {
-        NetworkListener.sharedInstance.startMonitoring(listener: self)
+        NetworkListener.instance.startMonitoring(listener: self, endPointURL: endPointURL)
 //        realm.schema.objectSchema.map { print($0.className) }
     }
     
@@ -81,12 +81,11 @@ extension Apollo {
 
 extension Apollo: NetworkStatusListener {
     
-    func networkStatusDidChange(status: Reachability.Connection) {
-        switch status {
-        case .none:
-            operationStatus = .OFFLINE
-        default:
-            operationStatus = .ONLINE
+    func networkStatusDidChange(isEndPointReachable: Bool) {
+        if isEndPointReachable {
+            connectionState = .ONLINE
+        } else {
+            connectionState = .OFFLINE
         }
     }
     
