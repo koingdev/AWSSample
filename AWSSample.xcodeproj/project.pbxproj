@@ -20,6 +20,8 @@
 		A240E4C320D0C7CF0045DD0E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */; };
 		A2417733213993E10038B0A7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2417732213993E10038B0A7 /* API.swift */; };
 		A25A7408213A0F1F0054EBA5 /* ChoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25A7407213A0F1F0054EBA5 /* ChoiceVC.swift */; };
+		A25CAA5D213ADEDB00FE4EE8 /* ThreadFIFO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25CAA5C213ADEDB00FE4EE8 /* ThreadFIFO.swift */; };
+		A25CAA61213AF63B00FE4EE8 /* RealmThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25CAA60213AF63B00FE4EE8 /* RealmThreadSafe.swift */; };
 		A28E8B6320D2681A0078936E /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6220D2681A0078936E /* Apollo.swift */; };
 		A28E8B6520D2707C0078936E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6420D2707C0078936E /* Constants.swift */; };
 		A2EB5297213A999400DB1177 /* NetworkListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EB5285213A999400DB1177 /* NetworkListener.swift */; };
@@ -58,6 +60,8 @@
 		A240E4C220D0C7CF0045DD0E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		A2417732213993E10038B0A7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = GraphQL/API.swift; sourceTree = "<group>"; };
 		A25A7407213A0F1F0054EBA5 /* ChoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceVC.swift; sourceTree = "<group>"; };
+		A25CAA5C213ADEDB00FE4EE8 /* ThreadFIFO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadFIFO.swift; sourceTree = "<group>"; };
+		A25CAA60213AF63B00FE4EE8 /* RealmThreadSafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmThreadSafe.swift; sourceTree = "<group>"; };
 		A28E8B6220D2681A0078936E /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
 		A28E8B6420D2707C0078936E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A2EB5285213A999400DB1177 /* NetworkListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkListener.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				A2EB5285213A999400DB1177 /* NetworkListener.swift */,
 				A2EB5286213A999400DB1177 /* EmojiString.swift */,
 				A2EB5287213A999400DB1177 /* WeakObj.swift */,
+				A25CAA5C213ADEDB00FE4EE8 /* ThreadFIFO.swift */,
+				A25CAA60213AF63B00FE4EE8 /* RealmThreadSafe.swift */,
 			);
 			name = Utilities;
 			path = ../../KDSwiftUtilities/KDSwiftUtilities/Utilities;
@@ -379,7 +385,9 @@
 				A2EB5298213A999400DB1177 /* EmojiString.swift in Sources */,
 				A22CE9BB20D0A97700FFFD8E /* CognitoUserPool.swift in Sources */,
 				A2EB529F213A999400DB1177 /* UIButtonX.swift in Sources */,
+				A25CAA5D213ADEDB00FE4EE8 /* ThreadFIFO.swift in Sources */,
 				A28E8B6520D2707C0078936E /* Constants.swift in Sources */,
+				A25CAA61213AF63B00FE4EE8 /* RealmThreadSafe.swift in Sources */,
 				A2EB52A6213A999400DB1177 /* UISliderX.swift in Sources */,
 				A2EB5297213A999400DB1177 /* NetworkListener.swift in Sources */,
 				A25A7408213A0F1F0054EBA5 /* ChoiceVC.swift in Sources */,

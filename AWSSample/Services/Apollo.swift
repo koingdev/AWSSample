@@ -11,25 +11,25 @@ import Reachability
 import RealmSwift
 
 enum ConnectionState {
-    
     case ONLINE
     case OFFLINE
-    
 }
 
-private class OfflineMutation: Object {
-    
-    
-    
-}
+//private class OfflineMutation: Object {
+//    
+//    
+//    
+//}
 
 final class Apollo {
     
     static let instance = Apollo()
-    private lazy var queue = DispatchQueue(label: "ApolloRealm")
-    private lazy var realm = try! Realm()
     var connectionState = ConnectionState.ONLINE
-    private var client: ApolloClient {
+//    let realmThread: ThreadFIFO = {
+//        return ThreadFIFO()
+//    }()
+    
+    var client: ApolloClient {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Content-Type" : "application/json"]
 //        configuration.httpAdditionalHeaders = ["x-api-key" : API_KEY]
@@ -49,31 +49,45 @@ final class Apollo {
 extension Apollo {
     
     func perform<Mutation: GraphQLMutation>(mutation: Mutation, realmCaching: Object, completion: @escaping () -> Void) {
-//        if operationStatus == .ONLINE {
-            client.perform(mutation: mutation) { [unowned self] result, error in
-                if error == nil {
-                    self.queue.async {
-                        try! self.realm.write {
-                            self.realm.add(realmCaching)
-                        }
-                    }
-                    completion()
-                } else {
-                    // error
-                }
-            }
-//        } else {
-//            realmCaching()
+        RealmThreadSafe.instance.write(realmCaching, mutation: mutation, completion: completion)
+//        client.perform(mutation: mutation) { result, error in
+//            let block = {
+//                debugPrint(Thread.current)
+//                try! RealmThreadSafe.instance.realm.write {
+//                    // add or update
+//                    self.realmThread.realm.add(realmCaching, update: true)
+//                }
+//            }
+            
+            
+//            RealmThreadSafe.instance.enqueue {
+//                try! RealmThreadSafe.instance.realm.write {
+//                    // add or update
+//                    RealmThreadSafe.instance.realm.add(realmCaching, update: true)
+//                }
+//            }
+//            self.realmThread.enqueue(block: block)
+//            DispatchQueue.main.async {
+//                if error == nil {
+//                    completion()
+//                } else {
+//                     // error
+//                }
+//            }
 //        }
     }
     
     func fetch<Query: GraphQLQuery>(query: Query, completion: @escaping (Query.Data) -> Void) {
-        client.fetch(query: query) { result, error in
-            if let result = result?.data {
-                completion(result)
-            } else {
-                // error
+        if connectionState == .ONLINE {
+            client.fetch(query: query) { result, error in
+                if let result = result?.data {
+                    completion(result)
+                } else {
+                    // error
+                }
             }
+        } else {
+            
         }
     }
     
