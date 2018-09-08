@@ -14,11 +14,13 @@ PODS:
   - SQLite.swift (0.11.4):
     - SQLite.swift/standard (= 0.11.4)
   - SQLite.swift/standard (0.11.4)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - AWSAppSync
   - AWSCognito
   - AWSCognitoIdentityProvider
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -29,6 +31,7 @@ SPEC REPOS:
     - AWSCore
     - ReachabilitySwift
     - SQLite.swift
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   AWSAppSync: f55e249d70e483863cd6582d8d9b148436dda364
@@ -38,7 +41,8 @@ SPEC CHECKSUMS:
   AWSCore: faae134779f0f6e46a8d426c0ccc02e34466b785
   ReachabilitySwift: e67b2cab4d5386053673d8a7421b5981e5f08259
   SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 7ff2c4ab00921487903b635b4d698a2def70fa12
+PODFILE CHECKSUM: 9bdbc7d63cb7c591dab4ef5f9ef4c5dcbf1d0ce2
 
 COCOAPODS: 1.5.0

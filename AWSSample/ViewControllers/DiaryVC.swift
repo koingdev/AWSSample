@@ -90,11 +90,12 @@ final class DiaryVC: UIViewController {
     }
     
     fileprivate func loadAllDiaries(cachePolicy: CachePolicy) {
+        AppSyncManager.setResolver(fileName: "allDiaries")
         AppSyncManager.instance().fetch(query: DiariesQuery(), cachePolicy: cachePolicy) { (res, err) in
             if let diaries = res?.data?.allDiaries {
                 self.diaries = diaries
             } else {
-                print("\n---------- [ \(err?.localizedDescription ?? "") ] ----------\n")
+                print("\n---------- [ \(res?.errors?.description ?? "") ] ----------\n")
             }
         }
     }

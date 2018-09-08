@@ -39,3 +39,15 @@ final class CognitoAuthProvider: AWSCognitoUserPoolsAuthProvider {
                                      .tokenString ?? ""
     }
 }
+
+////////////////////////////////////////////////////////////////
+//MARK: -
+//MARK: APIKeyAuthProvider
+//MARK: -
+////////////////////////////////////////////////////////////////
+
+final class APIKeyAuthProvider: AWSAPIKeyAuthProvider {
+    func getAPIKey() -> String {
+        return "da2-lzfikljxura4hla6mdtkf6hhfi"
+    }
+}

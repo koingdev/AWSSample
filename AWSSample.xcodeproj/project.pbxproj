@@ -34,6 +34,7 @@
 		A28E8B6020D265C20078936E /* AlertControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B5F20D265C20078936E /* AlertControllerX.swift */; };
 		A28E8B6320D2681A0078936E /* AppSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6220D2681A0078936E /* AppSyncManager.swift */; };
 		A28E8B6520D2707C0078936E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28E8B6420D2707C0078936E /* Constants.swift */; };
+		A29890242142C5E400397DA3 /* allDiaries.json in Resources */ = {isa = PBXBuildFile; fileRef = A29890232142C5E400397DA3 /* allDiaries.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		A28E8B5F20D265C20078936E /* AlertControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerX.swift; sourceTree = "<group>"; };
 		A28E8B6220D2681A0078936E /* AppSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSyncManager.swift; sourceTree = "<group>"; };
 		A28E8B6420D2707C0078936E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A29890232142C5E400397DA3 /* allDiaries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allDiaries.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				A240E4BF20D0C0C40045DD0E /* ViewControllers */,
 				A2ACC24F20DB655B00A58171 /* Storyboards */,
 				A217ECD020D9F37800C4D6E7 /* GraphQL */,
+				A29890222142C5E400397DA3 /* Resolvers */,
 				A202DFF120D0FCE3002D8E77 /* AppDelegate.swift */,
 				A22CE9B020D0A80700FFFD8E /* LaunchScreen.storyboard */,
 				A22CE9AE20D0A80700FFFD8E /* Assets.xcassets */,
@@ -171,6 +174,14 @@
 				A22456B3212B08ED0094B789 /* API.swift */,
 			);
 			path = AWSManager;
+			sourceTree = "<group>";
+		};
+		A29890222142C5E400397DA3 /* Resolvers */ = {
+			isa = PBXGroup;
+			children = (
+				A29890232142C5E400397DA3 /* allDiaries.json */,
+			);
+			path = Resolvers;
 			sourceTree = "<group>";
 		};
 		A2ACC24F20DB655B00A58171 /* Storyboards */ = {
@@ -273,6 +284,7 @@
 				A22CE9AF20D0A80700FFFD8E /* Assets.xcassets in Resources */,
 				A22CE9AD20D0A80600FFFD8E /* Main.storyboard in Resources */,
 				A217ECD320D9F37800C4D6E7 /* awssample.graphql in Resources */,
+				A29890242142C5E400397DA3 /* allDiaries.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +323,7 @@
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -321,6 +334,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -8,5 +8,6 @@ target 'AWSSample' do
   pod 'AWSAppSync'
   pod 'AWSCognito'
   pod 'AWSCognitoIdentityProvider'
+  pod 'SwiftyJSON'
 
 end
