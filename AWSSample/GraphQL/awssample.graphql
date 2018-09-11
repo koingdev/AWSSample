@@ -14,8 +14,16 @@ mutation InsertDiary($id: ID!, $title: String, $author: String) {
   }
 }
 
-subscription OnSubscribe($author: String) {
-  onSubscribe(author: $author) {
+subscription OnInsert($author: String) {
+  onInsert(author: $author) {
+    id
+    title
+    author
+  }
+}
+
+subscription OnUpdate($author: String) {
+  onUpdate(author: $author) {
     id
     title
     author

@@ -25,7 +25,8 @@ final class DiaryVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     fileprivate var tableViewX: TableViewX!
-    fileprivate var onSubscribe: AWSAppSyncSubscriptionWatcher<OnSubscribeSubscription>?
+    fileprivate var onInsert: AWSAppSyncSubscriptionWatcher<OnInsertSubscription>?
+    fileprivate var onUpdate: AWSAppSyncSubscriptionWatcher<OnUpdateSubscription>?
     fileprivate var diaries: [DiariesQuery.Data.AllDiary?] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -37,9 +38,11 @@ final class DiaryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpNavBar()
-        setUpTableView()
-        loadAllDiaries(cachePolicy: .fetchIgnoringCacheData)
+        startInsertSubscription()
+        startUpdateSubscription()
+//        setUpNavBar()
+//        setUpTableView()
+//        loadAllDiaries(cachePolicy: .fetchIgnoringCacheData)
 //        loadAllDiaries(cachePolicy: .returnCacheDataDontFetch)
     }
     
@@ -100,19 +103,41 @@ final class DiaryVC: UIViewController {
         }
     }
     
-    fileprivate func startSubscription() {
-        let subscription = OnSubscribeSubscription(author: author)
+    fileprivate func startInsertSubscription() {
+        let subscription = OnInsertSubscription(author: author)
         print("Starting subscription...")
         do {
-            onSubscribe = try AppSyncManager.instance().subscribe(subscription: subscription) { (result, transaction, error) in
+            onInsert = try AppSyncManager.instance().subscribe(subscription: subscription) { (result, transaction, error) in
                 if let result = result {
-                    print("Received new data")
                     // Store a reference to the new object
-                    let newDiary = result.data!.onSubscribe!
+                    let newDiary = result.data!.onInsert!
                     // Create a new object for the desired query where the new object content should reside
                     let diaryToAdd = DiariesQuery.Data.AllDiary.init(id: newDiary.id, title: newDiary.title, author: newDiary.author)
                     // Update the local store with the newly received data
                     try? transaction?.update(query: DiariesQuery()) { (data: inout DiariesQuery.Data) in
+                        print("Received new data")
+                        data.allDiaries?.append(diaryToAdd)
+                    }
+                }
+            }
+        } catch {
+            print("Error starting subscription")
+        }
+    }
+    
+    fileprivate func startUpdateSubscription() {
+        let subscription = OnUpdateSubscription(author: author)
+        print("Starting subscription...")
+        do {
+            onUpdate = try AppSyncManager.instance().subscribe(subscription: subscription) { (result, transaction, error) in
+                if let result = result {
+                    // Store a reference to the new object
+                    let newDiary = result.data!.onUpdate!
+                    // Create a new object for the desired query where the new object content should reside
+                    let diaryToAdd = DiariesQuery.Data.AllDiary.init(id: newDiary.id, title: newDiary.title, author: newDiary.author)
+                    // Update the local store with the newly received data
+                    try? transaction?.update(query: DiariesQuery()) { (data: inout DiariesQuery.Data) in
+                        print("Received new data")
                         data.allDiaries?.append(diaryToAdd)
                     }
                 }

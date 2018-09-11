@@ -197,9 +197,9 @@ public final class InsertDiaryMutation: GraphQLMutation {
   }
 }
 
-public final class OnSubscribeSubscription: GraphQLSubscription {
+public final class OnInsertSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnSubscribe($author: String) {\n  onSubscribe(author: $author) {\n    __typename\n    id\n    title\n    author\n  }\n}"
+    "subscription OnInsert($author: String) {\n  onInsert(author: $author) {\n    __typename\n    id\n    title\n    author\n  }\n}"
 
   public var author: String?
 
@@ -215,7 +215,7 @@ public final class OnSubscribeSubscription: GraphQLSubscription {
     public static let possibleTypes = ["Subscription"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("onSubscribe", arguments: ["author": GraphQLVariable("author")], type: .object(OnSubscribe.selections)),
+      GraphQLField("onInsert", arguments: ["author": GraphQLVariable("author")], type: .object(OnInsert.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -224,20 +224,119 @@ public final class OnSubscribeSubscription: GraphQLSubscription {
       self.snapshot = snapshot
     }
 
-    public init(onSubscribe: OnSubscribe? = nil) {
-      self.init(snapshot: ["__typename": "Subscription", "onSubscribe": onSubscribe.flatMap { $0.snapshot }])
+    public init(onInsert: OnInsert? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onInsert": onInsert.flatMap { $0.snapshot }])
     }
 
-    public var onSubscribe: OnSubscribe? {
+    public var onInsert: OnInsert? {
       get {
-        return (snapshot["onSubscribe"] as? Snapshot).flatMap { OnSubscribe(snapshot: $0) }
+        return (snapshot["onInsert"] as? Snapshot).flatMap { OnInsert(snapshot: $0) }
       }
       set {
-        snapshot.updateValue(newValue?.snapshot, forKey: "onSubscribe")
+        snapshot.updateValue(newValue?.snapshot, forKey: "onInsert")
       }
     }
 
-    public struct OnSubscribe: GraphQLSelectionSet {
+    public struct OnInsert: GraphQLSelectionSet {
+      public static let possibleTypes = ["Diary"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("title", type: .scalar(String.self)),
+        GraphQLField("author", type: .scalar(String.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, title: String? = nil, author: String? = nil) {
+        self.init(snapshot: ["__typename": "Diary", "id": id, "title": title, "author": author])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var title: String? {
+        get {
+          return snapshot["title"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var author: String? {
+        get {
+          return snapshot["author"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "author")
+        }
+      }
+    }
+  }
+}
+
+public final class OnUpdateSubscription: GraphQLSubscription {
+  public static let operationString =
+    "subscription OnUpdate($author: String) {\n  onUpdate(author: $author) {\n    __typename\n    id\n    title\n    author\n  }\n}"
+
+  public var author: String?
+
+  public init(author: String? = nil) {
+    self.author = author
+  }
+
+  public var variables: GraphQLMap? {
+    return ["author": author]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Subscription"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("onUpdate", arguments: ["author": GraphQLVariable("author")], type: .object(OnUpdate.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(onUpdate: OnUpdate? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onUpdate": onUpdate.flatMap { $0.snapshot }])
+    }
+
+    public var onUpdate: OnUpdate? {
+      get {
+        return (snapshot["onUpdate"] as? Snapshot).flatMap { OnUpdate(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "onUpdate")
+      }
+    }
+
+    public struct OnUpdate: GraphQLSelectionSet {
       public static let possibleTypes = ["Diary"]
 
       public static let selections: [GraphQLSelection] = [
